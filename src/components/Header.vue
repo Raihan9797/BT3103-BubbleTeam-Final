@@ -4,7 +4,7 @@
             <nav>
             <h1>GrantoU</h1><br>  
             <div id="Pages"> 
-                <router-link to="/" exact>Home</router-link> 
+                <router-link to="/" exact>Home</router-link>
                 <router-link to="/self" exact>For You</router-link>  
             </div>
             </nav>  
@@ -23,6 +23,10 @@ export default {
 <style scoped>
     header{
         background-color:navajowhite;
+        padding:10px;
+        border-style: solid;
+        border-color:black;
+        border-width: 2px;
     }
     h1{
         text-align: center;
@@ -33,5 +37,6 @@ export default {
     div{
         display:block;
         font-size: 30px;
+        padding: 10px;
     }
 </style>
