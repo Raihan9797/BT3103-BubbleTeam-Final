@@ -2,15 +2,15 @@ import firebase from "firebase"
 
 // For Firebase JS SDK v7.20.0 and later, measurementId is optional
 const firebaseConfig = {
-    apiKey: "AIzaSyCJV1SpAPq-XAoHfDHHAqicACExOmOBOfs",
-    authDomain: "bubbleteam-1b285.firebaseapp.com",
-    databaseURL: "https://bubbleteam-1b285.firebaseio.com",
-    projectId: "bubbleteam-1b285",
-    storageBucket: "bubbleteam-1b285.appspot.com",
-    messagingSenderId: "421632692805",
-    appId: "1:421632692805:web:57c4fa81b56257204f092c",
-    measurementId: "G-VTZNMNVH9Q"
-  };
+  apiKey: "AIzaSyCD8ID3GYsFQj2vtENUmT-Ds3VqLNJVY6M",
+  authDomain: "grantou-af639.firebaseapp.com",
+  databaseURL: "https://grantou-af639.firebaseio.com",
+  projectId: "grantou-af639",
+  storageBucket: "grantou-af639.appspot.com",
+  messagingSenderId: "937164314093",
+  appId: "1:937164314093:web:d9be81e2176531caf4c3e4",
+  measurementId: "G-95XB6EL7EN"
+};
 
   firebase.initializeApp(firebaseConfig);
   var users = firebase.firestore();
