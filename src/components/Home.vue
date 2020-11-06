@@ -23,7 +23,8 @@ the government can provide you in the Covid-19 pandemic.</p><br>
                 <br>
                 <button v-on:click.prevent="change">{{current().action}}</button>
             </form>
-            <p v-if="submitted==1">Thank you! Your response has been submitted!</p>
+            <p v-show="submitted==1">Your response has been submitted. Thank you!</p>
+            <forYou v-bind:grantsList='grants'></forYou>
             <br>
             <br>
         </div>
@@ -31,8 +32,12 @@ the government can provide you in the Covid-19 pandemic.</p><br>
 </template>
 <script>
 console.log('2')
-import grants from '../firebase.js'
+import Grants from '../firebase.js'
+import Personal from "./Personal.vue"
 export default {
+    components:{
+        'forYou':Personal
+    },
     data(){
         return{
             homeImage:"https://www.wm.edu/news/images/2020/photosets/heartfund-photoset/heartfund475.jpg",
@@ -106,20 +111,17 @@ export default {
                 action:"Submit"
             },
             index:0,
-            submitted:0
+            submitted:0,
+            grants:[]
         }
     },
     methods:{
         change(){
-            console.log("Just clicked: " + this.current().question + this.current().response)
             if (this.current().response == "") {
-                console.log("current response is empty: " + this.current().question + this.current().response)
                 alert("Please choose one response")
             } else {
                 if (this.current().action == "Next Question") {
-                    console.log("current response is not empty: " + this.index + this.current().question + this.current().response)
                     this.index = this.index + 1
-                    console.log("index just changed :" + this.current().question + this.current().response)
                 } else {
                     let user = {}
                     user.citizenship=this.citizenship.response
@@ -132,7 +134,44 @@ export default {
                     user.property = this.property.response
                     user.parenthood = this.parenthood.response
                     user.familySize=this.familySize.response
-                    grants.collection('')
+                    console.log('hi')
+                    Grants.collection('Grants').get().then((querySnapShot)=>{
+                        console.log('firebase')
+                        querySnapShot.forEach(doc=>{
+                            var grant={}
+                            doc = doc.data()
+                            console.log(doc.Name)
+                            if (doc.Citizenship[0] == "Anything" || doc.Citizenship.includes(user.citizenship)) {
+                                console.log('citizen')
+                                if (doc.AgeLimit == 0 || user.age <= doc.AgeLimit){
+                                    console.log('age')
+                                    if (doc.NatureOfWork[0] == "Anything" || doc.NatureOfWork.includes(user.work)) {
+                                        console.log('work')
+                                        if (doc.ParentOrNot == "Anything" || doc.ParentOrNot == user.parenthood) {
+                                            console.log('parent')
+                                            if (doc.TotalMonthlyIncome == 0 || user.income <= doc.TotalMonthlyIncome) {
+                                                console.log('income')
+                                                if (doc.TypeOfProperty[0] == "Anything" || doc.TypeOfProperty.includes(user.property)) {
+                                                    console.log('property')
+                                                    if (doc.EffectOfCovid[0] == "Anything" || doc.EffectOfCovid.includes(user.impact)) {
+                                                        console.log('effect')
+                                                        grant.apply = doc.Apply
+                                                        grant.date = doc.Date
+                                                        grant.detail = doc.Detail
+                                                        grant.amount = doc.GrantAmount
+                                                        grant.info = doc.GrantInfo
+                                                        grant.name = doc.Name
+                                                        this.grants.push(grant)
+                                                        console.log(grant)
+                                                    }
+                                                }
+                                            }
+                                        }
+                                    }
+                                } 
+                            }
+                        })
+                    })
                     alert("submitted")
                     this.email=""
                     this.password=""
@@ -150,7 +189,6 @@ export default {
         },
         current(){
             var questions=[this.citizenship,this.work,this.impact,this.age,this.income,this.familySize,this.property,this.parenthood]
-            console.log("current is called: " +  this.index+questions[this.index].question + questions[this.index].response)
             return questions[this.index]
         }
     }
@@ -158,7 +196,7 @@ export default {
 </script>
 <style scoped>
 #image{
-    height:500px;
+    height:700px;
     position: relative;
     text-align: center;
 }

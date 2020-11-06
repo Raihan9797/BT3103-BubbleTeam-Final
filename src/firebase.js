@@ -13,5 +13,5 @@ const firebaseConfig = {
 };
 
   firebase.initializeApp(firebaseConfig);
-  var grants = firebase.firestore();
-  export default grants;
+  var Grants = firebase.firestore();
+  export default Grants;
