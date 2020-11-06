@@ -1,11 +1,10 @@
 <template>
   <div>
     <ul>
-        <li v-for="grant in grantsList" v-bind:key="grant.id" v-on:click="grant.show = !grant.show">
-            <h2>{{grant.Name}}</h2>
-            <h4>{{grant.GrantInfo}}</h4>
-            <h4>{{grant.GrantAmount}}</h4>
-
+        <li v-for="grant in grantsList" v-bind:key="grant.name" v-on:click="grant.show = !grant.show">
+            <h2>{{grant.name}}</h2>
+            <h4>{{grant.grantInfo}}</h4>
+            <h4>{{grant.grantAmount}}</h4>
         </li>
     </ul>
   </div>
@@ -13,7 +12,6 @@
 
 
 <script>
-var div = document.createElement('div');
 import database from '../firebase.js'
 export default {
   
@@ -25,19 +23,23 @@ export default {
   methods:{
     fetchItems:function(){
       database.collection('Grants').get().then((querySnapShot)=>{
-        let grant={}
         querySnapShot.forEach(doc=>{
+            let grant={}
             doc=doc.data()
-            grant.id=doc.id //也可能是doc.Name
+            grant.name=doc.Name//也可能是doc.Name
+            grant.grantInfo = doc.GrantInfo
+            grant.grantAmount = doc.GrantAmount
             console.log(grant)
             grant.show=false
             this.grantsList.push(grant)      
         })
       })
     }
+	},
+	created(){
+    this.fetchItems()
     
   }  
-  
 }
 </script>
 
