@@ -6,6 +6,7 @@
             <div id="Pages"> 
                 <router-link to="/" exact>Home</router-link>
                 <router-link to="/all" exact>All Grants</router-link>
+                <router-link to="/contactus" exact>Contact Us</router-link>
             </div>
             </nav>  
         </header>
