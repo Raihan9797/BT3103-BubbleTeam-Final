@@ -31,7 +31,7 @@ the government can provide you in the Covid-19 pandemic.</p><br>
 </template>
 <script>
 console.log('2')
-import users from '../firebase.js'
+import grants from '../firebase.js'
 export default {
     data(){
         return{
@@ -132,7 +132,7 @@ export default {
                     user.property = this.property.response
                     user.parenthood = this.parenthood.response
                     user.familySize=this.familySize.response
-                    users.collection('users').add(user)
+                    grants.collection('')
                     alert("submitted")
                     this.email=""
                     this.password=""

@@ -13,5 +13,5 @@ const firebaseConfig = {
 };
 
   firebase.initializeApp(firebaseConfig);
-  var users = firebase.firestore();
-  export default users;
+  var grants = firebase.firestore();
+  export default grants;
