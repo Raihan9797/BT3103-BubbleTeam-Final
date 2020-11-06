@@ -5,8 +5,8 @@
             <h2>{{grant.name}}</h2>
             <h4>{{grant.grantInfo}}</h4>
             <h4>{{grant.grantAmount}}</h4>
-            <button @click = grant.detail>Detail</button>&nbsp; 
-            <button @click = grant.apply>Apply</button>
+            <button v-on:click ="open(grant.detail)">Detail</button>&nbsp; 
+            <button v-on:click ="open(grant.apply)">Apply</button>
         </li>
     </ul>
   </div>
@@ -28,7 +28,7 @@ export default {
         querySnapShot.forEach(doc=>{
             let grant={}
             doc=doc.data()
-            grant.name=doc.Name//也可能是doc.Name
+            grant.name=doc.Name
             grant.grantInfo = doc.GrantInfo
             grant.grantAmount = doc.GrantAmount
             grant.detail = doc.Detail
@@ -38,6 +38,9 @@ export default {
             this.grantsList.push(grant)      
         })
       })
+    },
+    open:function(link){
+      window.open(link)
     }
 	},
 	created(){
