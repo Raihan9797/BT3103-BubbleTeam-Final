@@ -1,0 +1,84 @@
+<template>
+  <div>
+    <ul>
+        <li v-for="grant in grantsList" v-bind:key="grant.id" v-on:click="grant.show = !grant.show">
+            <h2>{{grant.Name}}</h2>
+            <h4>{{grant.GrantInfo}}</h4>
+            <h4>{{grant.GrantAmount}}</h4>
+
+        </li>
+    </ul>
+  </div>
+</template>
+
+
+<script>
+var div = document.createElement('div');
+import database from '../firebase.js'
+export default {
+  
+  data(){
+    return{
+      grantsList:[]
+    }
+  },
+  methods:{
+    fetchItems:function(){
+      database.collection('Grants').get().then((querySnapShot)=>{
+        let grant={}
+        querySnapShot.forEach(doc=>{
+            doc=doc.data()
+            grant.id=doc.id //也可能是doc.Name
+            console.log(grant)
+            grant.show=false
+            this.grantsList.push(grant)      
+        })
+      })
+    }
+    
+  }  
+  
+}
+</script>
+
+<!-- Add "scoped" attribute to limit CSS to this component only -->
+<style scoped>
+header{
+    background:rgb(122, 63, 100);
+    padding:10px;
+    border-style: solid;
+    border-color:black;
+    border-width: 2px;
+}
+h1{
+    color:ivory
+}
+h2{
+  text-align: center
+}
+#itemsList{
+    width: 100%;
+    max-width: 1200px;
+    margin: 30px auto;
+    padding: 0 5px;
+    box-sizing: border-box;
+}
+ul{
+    display: flex;
+    flex-wrap: wrap;
+    list-style-type: none;
+    padding: 0;
+}
+li{
+    flex-grow: 1;
+    flex-basis: 300px;
+    text-align: center;
+    padding: 10px;
+    border: 1px solid #222;
+    margin: 10px;
+}
+img{
+  width:150px;
+  height: 150px;
+}
+</style>
