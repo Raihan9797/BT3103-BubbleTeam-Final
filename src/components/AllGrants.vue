@@ -5,6 +5,8 @@
             <h2>{{grant.name}}</h2>
             <h4>{{grant.grantInfo}}</h4>
             <h4>{{grant.grantAmount}}</h4>
+            <button @click = grant.detail>Detail</button>&nbsp; 
+            <button @click = grant.apply>Apply</button>
         </li>
     </ul>
   </div>
@@ -29,6 +31,8 @@ export default {
             grant.name=doc.Name//也可能是doc.Name
             grant.grantInfo = doc.GrantInfo
             grant.grantAmount = doc.GrantAmount
+            grant.detail = doc.Detail
+            grant.apply = doc.Apply
             console.log(grant)
             grant.show=false
             this.grantsList.push(grant)      
