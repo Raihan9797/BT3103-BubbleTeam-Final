@@ -4,8 +4,8 @@
             <nav>
             <h1>GrantoU</h1><br>  
             <div id="Pages"> 
-                <router-link to="/" exact>Home</router-link>
-                <router-link to="/all" exact>All Grants</router-link>
+                <router-link to="/" exact>Home</router-link>&nbsp;
+                <router-link to="/all" exact>All Grants</router-link>&nbsp;
             </div>
             </nav>  
         </header>
