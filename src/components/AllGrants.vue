@@ -1,5 +1,7 @@
 <template>
-  <div>
+  <div id="app">
+    <NatureOfWork></NatureOfWork>
+    <EffectsOfCovid></EffectsOfCovid>
     <ul>
         <li v-for="grant in grantsList" v-bind:key="grant.name" v-on:click="grant.show = !grant.show">
             <h2>{{grant.name}}</h2>
@@ -12,11 +14,16 @@
   </div>
 </template>
 
-
 <script>
 import database from '../firebase.js'
+import NatureOfWork from '../components/NatureOfWork.vue'
+import EffectsOfCovid from '../components/EffectsOfCovid.vue'
+
 export default {
-  
+  components: {
+    NatureOfWork,
+    EffectsOfCovid
+  },
   data(){
     return{
       grantsList:[]
