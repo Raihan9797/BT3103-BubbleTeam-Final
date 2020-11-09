@@ -9,10 +9,18 @@
                 <p class = "info">Information: {{ grant.info }} </p>
                 <p class = "info">Grant Amount: {{grant.amount}} </p>
                 <p class = "info">Application Deadline: {{ grant.date}} </p>
+                <p class = "info">MAX AMOUNT: {{ grant.maxamt}} </p>
                 <p class = "info">Apply here:
                     <span v-bind:href="grant.detail">website</span>
                 </p>
+                <input type="checkbox" id='checkbox' v-on:change="getGrantAmount(grant)" v-model="grant.checked">
+                <label for="checkbox">Are you applying for this grant?</label>
             </li>
+
+            <div id = 'calc'>
+                <p>Amount to Claim: {{sum}}</p>
+                <p>Maximum amount claimable: {{getTotalAmount()}}</p>
+            </div>
         </div>
     </div>
 </template>
@@ -22,6 +30,29 @@ export default {
         grantsList:{
             Type:Array
         }
+    },
+    data(){
+        return {
+            sum: 0,
+        }
+    },
+    methods: {
+        getGrantAmount(grant){
+            if(grant.checked){
+                console.log(grant.maxamt)
+                this.sum += grant.maxamt
+            } else {
+                this.sum -= grant.maxamt
+            }
+        },
+        getTotalAmount(){
+            var maxsum = 0
+            this.grantsList.forEach(grant => {
+                maxsum += grant.maxamt
+            });
+            return maxsum
+        }
+        
     }
 }
 </script>
