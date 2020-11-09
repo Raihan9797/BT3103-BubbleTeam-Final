@@ -161,6 +161,7 @@ export default {
                                                         grant.amount = doc.GrantAmount
                                                         grant.info = doc.GrantInfo
                                                         grant.name = doc.Name
+                                                        grant.maxamt = doc.maxAmt
                                                         this.grants.push(grant)
                                                         console.log(grant)
                                                     }
