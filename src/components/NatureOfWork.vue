@@ -9,7 +9,7 @@
 import Chart from "./NatureOfWork.js";
 export default {
   components: {
-    Chart
+    "chart":Chart
   }
 };
 </script>

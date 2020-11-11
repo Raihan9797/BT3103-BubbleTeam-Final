@@ -9,7 +9,7 @@
 import Chart from "./EffectsOfCovid.js";
 export default {
   components: {
-    Chart
+    "chart":Chart
   }
 };
 </script>

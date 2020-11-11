@@ -3,13 +3,18 @@
     <NatureOfWork></NatureOfWork>
     <EffectsOfCovid></EffectsOfCovid>
     <ul>
-        <li v-for="grant in grantsList" v-bind:key="grant.name" v-on:click="grant.show = !grant.show">
-            <h2>{{grant.name}}</h2>
-            <h4>{{grant.grantInfo}}</h4>
-            <h4>{{grant.grantAmount}}</h4>
-            <button v-on:click ="open(grant.detail)">Detail</button>&nbsp; 
-            <button v-on:click ="open(grant.apply)">Apply</button>
-        </li>
+          <li class = "grant" v-for="grant in grantsList" v-bind:key="grant.name">
+              <p id = "name"><b>Name: {{ grant.name }}</b></p>
+              <div id="rest">
+                  <p id = "info"><b>Detail: {{ grant.grantInfo }}</b> </p>
+                  <hr>
+                  <p class = "others"><b>Grant Amount:</b> {{grant.grantAmount}}</p>
+                  <p class = "others"><b>Application Deadline:</b> {{ grant.date}} </p>
+                  <p class = "others"><b>MAX AMOUNT:</b> S${{ grant.maxAmt}} </p>
+                  <button v-on:click ="open(grant.apply)">Apply</button>
+              </div>
+              <br>
+          </li>
     </ul>
   </div>
 </template>
@@ -40,6 +45,8 @@ export default {
             grant.grantAmount = doc.GrantAmount
             grant.detail = doc.Detail
             grant.apply = doc.Apply
+            grant.maxAmt = doc.maxAmt
+            grant.date=doc.Date
             console.log(grant)
             grant.show=false
             this.grantsList.push(grant)      
@@ -85,16 +92,49 @@ ul{
     list-style-type: none;
     padding: 0;
 }
-li{
+img{
+  width:150px;
+  height: 150px;
+}
+.grant{
     flex-grow: 1;
     flex-basis: 300px;
     text-align: center;
     padding: 10px;
     border: 1px solid #222;
     margin: 10px;
+    display:block;
+    background-color: white;
+    position: relative;
 }
-img{
-  width:150px;
-  height: 150px;
+#name{
+    height:80px;
+    background-color: violet;
+    width:100%;
+    font-size: 30px;
+    font-style:initial;
+    color:white;
+    font-family: Impact, Haettenschweiler, 'Arial Narrow Bold', sans-serif;
+}
+#rest{
+    background-color: white;
+    font-size: 20px;
+}
+#info{
+    font-size:25px;
+}
+.others{
+    font-size: 20px;
+    font-family: fantasy;
+}
+button{
+    background-color: violet;
+    border-radius: 50px;
+    width:90px;
+    height:40px;
+    font-size: 20px;
+    bottom: 10px;
+    left:130px;
+    position:absolute;
 }
 </style>
