@@ -240,4 +240,8 @@ button{
     border-style:double;
     
 }
+input{
+    height:30px;
+    font-size: 20px;
+}
 </style>
