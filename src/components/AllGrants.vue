@@ -4,7 +4,7 @@
     <EffectsOfCovid></EffectsOfCovid>
     <ul>
           <li class = "grant" v-for="grant in grantsList" v-bind:key="grant.name">
-              <p id = "name"><b>Name: {{ grant.name }}</b></p>
+              <div id = "name"><p><b>{{ grant.name }}</b></p></div>
               <div id="rest">
                   <p id = "info"><b>Detail: {{ grant.grantInfo }}</b> </p>
                   <hr>
@@ -99,25 +99,25 @@ img{
 .grant{
     flex-grow: 1;
     flex-basis: 300px;
-    text-align: center;
+    text-align: left;
     padding: 10px;
     border: 1px solid #222;
     margin: 10px;
     display:block;
-    background-color: white;
     position: relative;
+    background-color:white;
 }
-#name{
+#name{ 
     height:80px;
-    background-color: violet;
     width:100%;
     font-size: 30px;
     font-style:initial;
     color:white;
+    background-color: violet;
+    text-align: center;
     font-family: Impact, Haettenschweiler, 'Arial Narrow Bold', sans-serif;
 }
 #rest{
-    background-color: white;
     font-size: 20px;
 }
 #info{
@@ -134,7 +134,7 @@ button{
     height:40px;
     font-size: 20px;
     bottom: 10px;
-    left:130px;
+    left:40%;
     position:absolute;
 }
 </style>

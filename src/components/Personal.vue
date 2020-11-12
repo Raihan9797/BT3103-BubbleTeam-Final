@@ -4,7 +4,7 @@
         <br>
         <p id = "intro" style="font-size:30px">The grants you are eligible for are:</p>
         <div id="grantsList">
-            <ul>
+            <ul v-if="grantsList.length>0">
             <li class = "grant" v-for="grant in grantsList" v-bind:key="grant.name">
                 <p id = "name"><b>Name: {{ grant.name }}</b></p>
                 <div id="rest">
@@ -18,7 +18,7 @@
                 <br>
             </li>
             </ul>
-
+            <p id="noGrant" v-if="submitted==1 && grantsList.length==0">Sorry, based on the information you provided, there are no grants that you are eligible for.</p>
             <div id = 'calc'>
                 <p id="title"><b>The grants you have selected</b></p>
                 <ol>
@@ -38,6 +38,9 @@ export default {
     props:{
         grantsList:{
             Type:Array
+        },
+        submitted:{
+            Type:Number
         }
     },
     data(){
@@ -97,7 +100,6 @@ export default {
     font-family: Impact, Haettenschweiler, 'Arial Narrow Bold', sans-serif;
 }
 #rest{
-    background-color: white;
     font-size: 20px;
 }
 #info{
@@ -126,7 +128,7 @@ button{
 #title{
     background-color: violet;
     font-size: 25px;
-    color:white;
+    color:black;
     text-align: left;
 }
 ol{
@@ -140,7 +142,7 @@ ol{
 #total{
     background-color: violet;
     font-size: 25px;
-    color:white;
+    color:black;
     text-align: left;
 }
 #sum{

@@ -27,7 +27,7 @@ the government can provide you in the Covid-19 pandemic.</p><br>
             <br>
             <br>
         </div>
-        <forYou v-bind:grantsList='grants'></forYou>
+        <forYou v-bind:submitted="submitted" v-bind:grantsList='grants'></forYou>
     </div>
 </template>
 <script>
