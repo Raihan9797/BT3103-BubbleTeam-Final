@@ -10,7 +10,8 @@ export default {
     name: "HereMap",
     data() {
         return {
-            platform: {}
+            platform: {},
+            map:{}
         }
     },
     mounted() {
@@ -22,26 +23,25 @@ export default {
     },
     methods: {
       initializeHereMap() {
-        const mapContainer = this.$refs.hereMap;
-        const H = window.H;
+        const container = this.$refs.hereMap;
         var maptypes = this.platform.createDefaultLayers();
-        var map = new H.Map(mapContainer, maptypes.vector.normal.map,
+        this.map = new window.H.Map(container, maptypes.vector.normal.map,
             {
                 zoom: "11",
                 center: {lat:"1.3521",lng:"103.8198"}
             }
         );
-        map.addObject(new H.map.Marker({lat:1.3668,lng:103.8407})); //Ang Mo Kio CC
-        map.addObject(new H.map.Marker({lat:1.3521,lng:103.9408})); //Our Tampines Hub
-        map.addObject(new H.map.Marker({lat:1.3935,lng:103.9135})); //Punggol CC
-        map.addObject(new H.map.Marker({lat:1.4396,lng:103.7882})); //Woodlands CC
-        map.addObject(new H.map.Marker({lat:1.3950,lng:103.7447})); //Yew Tee CC
-        map.addObject(new H.map.Marker({lat:1.3486,lng:103.7114})); //Boon Lay CC
-        map.addObject(new H.map.Marker({lat:1.3028,lng:103.8636})); //Kampong Glam 
-        map.addObject(new H.map.Marker({lat:1.30905939946,lng:103.793063494})); //Buona Vista CC
-        addEventListener("resize", () => map.getViewPort().resize());
-        new H.mapevents.Behavior(new H.mapevents.MapEvents(map));
-        H.ui.UI.createDefault(map, maptypes);
+        this.map.addObject(new window.H.map.Marker({lat:1.3668,lng:103.8407})); //Ang Mo Kio CC
+        this.map.addObject(new window.H.map.Marker({lat:1.3521,lng:103.9408})); //Our Tampines Hub
+        this.map.addObject(new window.H.map.Marker({lat:1.3935,lng:103.9135})); //Punggol CC
+        this.map.addObject(new window.H.map.Marker({lat:1.4396,lng:103.7882})); //Woodlands CC
+        this.map.addObject(new window.H.map.Marker({lat:1.3950,lng:103.7447})); //Yew Tee CC
+        this.map.addObject(new window.H.map.Marker({lat:1.3486,lng:103.7114})); //Boon Lay CC
+        this.map.addObject(new window.H.map.Marker({lat:1.3028,lng:103.8636})); //Kampong Glam 
+        this.map.addObject(new window.H.map.Marker({lat:1.30905939946,lng:103.793063494})); //Buona Vista CC
+        addEventListener("resize", () => this.map.getViewPort().resize());
+        new window.H.mapevents.Behavior(new window.H.mapevents.MapEvents(this.map));
+        window.H.ui.UI.createDefault(this.map, maptypes);
       }
       
     }
