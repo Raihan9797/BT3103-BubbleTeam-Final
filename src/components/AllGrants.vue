@@ -66,13 +66,6 @@ export default {
 
 <!-- Add "scoped" attribute to limit CSS to this component only -->
 <style scoped>
-header{
-    background:rgb(122, 63, 100);
-    padding:10px;
-    border-style: solid;
-    border-color:black;
-    border-width: 2px;
-}
 h1{
     color:ivory
 }
@@ -138,6 +131,6 @@ button{
     position:absolute;
 }
 .background{
-    background-color:mediumpurple;
+    background-color:plum;
 }
 </style>
