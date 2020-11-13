@@ -1,7 +1,7 @@
 <template>
     <div>
         <div id="image">
-            <img v-bind:src="homeImage" style="width:100%">
+            <img v-bind:src="homeImage" style="width:100%;height:500px">
             <p id="word">Don't suffer in this alone.<br>Tell us about you,<br>
             and we will help you.</p>
         </div>
@@ -9,7 +9,7 @@
         <div id="survey">
             <br>
             <br><br><br>
-            <p id="instruction">Fill up the survey below to find out what kind of help 
+            <p id="instruction">Fill up the survey below to find out what kind of help <br> 
 the government can provide you in the Covid-19 pandemic.</p><br>
             <form action="submit" v-if="submitted==0">
                 <div id = "questions">
@@ -24,10 +24,10 @@ the government can provide you in the Covid-19 pandemic.</p><br>
                 <button v-on:click.prevent="change">{{current().action}}</button>
             </form>
             <p v-show="submitted==1">Your response has been submitted. Thank you!</p>
-            <forYou v-bind:grantsList='grants'></forYou>
             <br>
             <br>
         </div>
+        <forYou v-bind:submitted="submitted" v-bind:grantsList='grants'></forYou>
     </div>
 </template>
 <script>
@@ -40,7 +40,7 @@ export default {
     },
     data(){
         return{
-            homeImage:"https://www.wm.edu/news/images/2020/photosets/heartfund-photoset/heartfund475.jpg",
+            homeImage:"https://cdn.pixabay.com/photo/2016/10/08/00/16/gradient-1722840_1280.jpg",
             email:"",
             password:"",
             citizenship:{
@@ -161,6 +161,7 @@ export default {
                                                         grant.amount = doc.GrantAmount
                                                         grant.info = doc.GrantInfo
                                                         grant.name = doc.Name
+                                                        grant.maxamt = doc.maxAmt
                                                         this.grants.push(grant)
                                                         console.log(grant)
                                                     }
@@ -196,20 +197,20 @@ export default {
 </script>
 <style scoped>
 #image{
-    height:700px;
     position: relative;
-    text-align: center;
+    text-align:inherit;
 }
 #word{
     position:absolute;
     top:0px;
     left:350px;
-    font-size: 30px;
+    font-size: 40px;
     font-family: fantasy;
     color:black;
 }
 #survey{
     background-color:mediumpurple;
+    border-radius: 50px;
     font-size:20px;
     text-align: center
 }
@@ -219,19 +220,28 @@ export default {
 }
 #questions{
     font-style:inherit;
-    font-size: 25px;
+    font-size: 40px;
 }
 select{
     -webkit-appearance:inherit;
-    font-size: 20px;
+    width:400px;
+    height:50px;
+    font-size: 25px;
     font-family:serif;
     background-color:pink
 }
 button{
     font-size:xx-large;
+    height:50px;
+    width:220px;
+    border-radius: 40px;
     background-color:thistle;
     font-family:monospace;
     border-style:double;
     
+}
+input{
+    height:30px;
+    font-size: 20px;
 }
 </style>
