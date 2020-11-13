@@ -6,7 +6,7 @@
             <div id="Pages"> 
                 <router-link to="/" exact class = 'headernames'>Home</router-link>
                 <router-link to="/all" exact class = 'headernames'>All Grants</router-link>
-                <router-link to="/contactus" exact class = 'headernames'>Contact Us</router-link>
+                <router-link to="/contactus" exact class = 'headernames'>Locate Us</router-link>
             </div>
             </nav>  
         </header>
