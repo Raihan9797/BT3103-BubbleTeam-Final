@@ -1,5 +1,5 @@
 <template>
-  <div id="app">
+  <div id="app" class = "background">
     <NatureOfWork></NatureOfWork>
     <EffectsOfCovid></EffectsOfCovid>
     <ul>
@@ -136,5 +136,8 @@ button{
     bottom: 10px;
     left:40%;
     position:absolute;
+}
+.background{
+    background-color:mediumpurple;
 }
 </style>
