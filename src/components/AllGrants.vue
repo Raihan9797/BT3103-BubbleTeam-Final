@@ -2,6 +2,7 @@
   <div id="app" class = "background">
     <NatureOfWork></NatureOfWork>
     <EffectsOfCovid></EffectsOfCovid>
+    <Covid19data></Covid19data>
     <ul>
           <li class = "grant" v-for="grant in grantsList" v-bind:key="grant.name">
               <div id = "name"><p><b>{{ grant.name }}</b></p></div>
@@ -23,11 +24,13 @@
 import database from '../firebase.js'
 import NatureOfWork from '../components/NatureOfWork.vue'
 import EffectsOfCovid from '../components/EffectsOfCovid.vue'
+import Covid19data from '../components/Axios.vue'
 
 export default {
   components: {
     NatureOfWork,
-    EffectsOfCovid
+    EffectsOfCovid,
+    Covid19data
   },
   data(){
     return{
