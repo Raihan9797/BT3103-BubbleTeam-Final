@@ -20,6 +20,8 @@ export default {
     content:"";
     display:table;
     clear:both;
+    margin-left:auto;
+    margin-right:auto;
 }
 #chart{
   height:240px;
@@ -29,6 +31,6 @@ export default {
   border-width: 1px;
   padding-bottom: 60px;
   padding-right: 100px;
-  float:left;
+  background-color: aliceblue;
 }
 </style>

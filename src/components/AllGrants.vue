@@ -2,6 +2,7 @@
   <div id="app" class = "background">
     <NatureOfWork></NatureOfWork>
     <EffectsOfCovid></EffectsOfCovid>
+    <br><br>
     <Covid19data></Covid19data>
     <ul>
           <li class = "grant" v-for="grant in grantsList" v-bind:key="grant.name">
