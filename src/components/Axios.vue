@@ -1,9 +1,9 @@
 <template>
     <div id="main">
-         <div id="chart1">
+         <div class="chart">
             <COVID19data></COVID19data>
          </div>
-         <div id="chart2">
+         <div class="chart">
             <CovidSG></CovidSG>
         </div>
     </div>
@@ -28,26 +28,14 @@ export default {
     margin-left:auto;
     margin-right:auto;
 }
-#chart1{
-  height:300px;
-  width:400px;
-  background-color: azure;
+.chart{
+  height:240px;
+  width:300px;
   border-style: solid;
   border-color:rgb(155, 84, 84);
   border-width: 1px;
-  padding-bottom: 100px;
-  padding-right: 100px;
-  background-color: aliceblue;
-}
-#chart2{
-  height:300px;
-  width:400px;
-  background-color: azure;
-  border-style: solid;
-  border-color:rgb(155, 84, 84);
-  border-width: 1px;
-  padding-bottom: 100px;
-  padding-right: 100px;
-  background-color: aliceblue;
+  padding-bottom: 60px;
+  padding-right: 60px;
+  float:left;
 }
 </style>
