@@ -2,8 +2,8 @@
     <footer>
         <div id="info">
             <p><i>Contact us at</i><br>
-            <i>Phone number: +65 12345678</i><br>
-            <i>Email address: 123456@gmail.com</i><br>
+            <i>Phone number: +65 67891011</i><br>
+            <i>Email address: enquiry@grantou.com</i><br>
             </p>
         </div>
         <div id="copyright"><p>Copyright@BT3103</p></div>

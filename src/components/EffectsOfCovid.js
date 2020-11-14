@@ -12,7 +12,7 @@ export default {
             datasets: [{
                 label: "Number of grants",
                 backgroundColor: ["#3e95cd", "#3e95cd","#3e95cd","#8e5ea2","#8e5ea2","#8e5ea2","#3cba9f","#e8c3b9"],
-                data: [7,7,8,5,6,6,6,5]
+                data: [6,6,4,7,5,5,5,6]
               }]
         },
         options: {

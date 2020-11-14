@@ -7,7 +7,7 @@
                 <router-link to="/" exact class = 'headernames'>Home</router-link>
                 <router-link to="/forYou" exact class = 'headernames'>For You</router-link>
                 <router-link to="/all" exact class = 'headernames'>All Grants</router-link>
-                <router-link to="/contactus" exact class = 'headernames'>Locate Us</router-link>
+                <router-link to="/furtherAssitance" exact class = 'headernames'>Further Assistance</router-link>
             </div>
             </nav>  
         </header>
