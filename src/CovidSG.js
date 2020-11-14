@@ -35,15 +35,14 @@ export default{
     
     fetchData : function(){
         axios.get('https://api.covid19api.com/summary').then(response=>{
-        this.results=response.data.Countries[197]
+        this.results=response.data.Countries[153]
         for(let key in this.results){
-            if(key == "NewConfirmed"){
-                key = "NewConfirmed"
+            if (key == "TotalConfirmed" || key == "TotalRecovered"){
                 this.chartdata.datasets[0].data.push(this.results[key])
                 this.chartdata.labels.push(key+'')
             }
         }
-        console.log(this.results)
+        console.log(response.data.Countries[153])
         /*for(let key in this.results){
             if(typeof this.results[key] == 'number'){
                 this.chartdata.datasets[0].data.push(this.results[key])
