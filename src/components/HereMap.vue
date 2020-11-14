@@ -1,7 +1,17 @@
 <template>
   <div id="map">
-    <h2>Require assistance with the application? Approach our ambassadors at any of these 8 locations!</h2>
+    <h2>Need help with the application paperwork? Approach our ambassadors at any of these 8 locations!</h2>
     <div id="hereMap" style="height:600px;width:100%"></div>
+    <h3>
+    Ang Mo Kio CC: 795 Ang Mo Kio Avenue 1, 569976<br>
+    Boon Lay CC: 10 Boon Lay Place, 649882<br>
+    Buona Vista CC: 36 Holland Drive, 270036<br>
+    Kampong Glam CC: 385 Beach Road, 199581<br>
+    Our Tampines Hub: 1 Tampines Walk, 528523<br>
+    Punggol CC: 3 Hougang Avenue 6, 538808<br>
+    Woodlands CC: 1 Woodlands Street 81, 738526<br>
+    Yew Tee CC: 20 Chua Chu Kang Street 52, 689286
+    </h3>
   </div>
 </template>
 

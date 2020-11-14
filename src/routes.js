@@ -6,5 +6,5 @@ export default[
     {path:'/',component:Home},
     {path:'/forYou',component:ForYou},
     {path:'/all',component:All},
-    {path:'/contactus',component:HereMap}
+    {path:'/furtherAssitance',component:HereMap}
 ]
