@@ -1,59 +1,51 @@
 <template>
   <div id="map">
-    <h2>Still confused about the application process? Approach our ambassadors at your nearest community centre :-)</h2>
-    <!--In the following div the HERE Map will render-->
-    <div id="mapContainer" style="height:600px;width:100%" ref="hereMap"></div>
+    <h2>Require assistance with the application? Approach our ambassadors at any of these 8 locations!</h2>
+    <div ref="hereMap" style="height:600px;width:100%"></div>
   </div>
 </template>
 
 <script>
 export default {
-  name: "HereMap",
-  data() {
-    return {
-      platform: null,
-      apikey: "eSOYf9qKwUkPXJJP_5sYr1fVm1j0LnWR0S2Brl73QTA",
-      // You can get the API KEY from developer.here.com
-      center: {
-        lat: 1.3521,
-        lng: 103.8198
+    name: "HereMap",
+    data() {
+        return {
+            platform: {},
+            map:{}
+        }
+    },
+    mounted() {
+        const platform = new window.H.service.Platform({
+            apikey: "eSOYf9qKwUkPXJJP_5sYr1fVm1j0LnWR0S2Brl73QTA"
+        });
+        this.platform = platform;
+        this.initializeHereMap();
+    },
+    methods: {
+      initializeHereMap() {
+        const container = this.$refs.hereMap;
+        var maptypes = this.platform.createDefaultLayers();
+        this.map = new window.H.Map(container, maptypes.vector.normal.map,
+            {
+                zoom: "11",
+                center: {lat:"1.3521",lng:"103.8198"}
+            }
+        );
+        this.map.addObject(new window.H.map.Marker({lat:1.3668,lng:103.8407})); //Ang Mo Kio CC
+        this.map.addObject(new window.H.map.Marker({lat:1.3521,lng:103.9408})); //Our Tampines Hub
+        this.map.addObject(new window.H.map.Marker({lat:1.3935,lng:103.9135})); //Punggol CC
+        this.map.addObject(new window.H.map.Marker({lat:1.4396,lng:103.7882})); //Woodlands CC
+        this.map.addObject(new window.H.map.Marker({lat:1.3950,lng:103.7447})); //Yew Tee CC
+        this.map.addObject(new window.H.map.Marker({lat:1.3486,lng:103.7114})); //Boon Lay CC
+        this.map.addObject(new window.H.map.Marker({lat:1.3028,lng:103.8636})); //Kampong Glam 
+        this.map.addObject(new window.H.map.Marker({lat:1.30905939946,lng:103.793063494})); //Buona Vista CC
+        addEventListener("resize", () => this.map.getViewPort().resize());
+        new window.H.mapevents.Behavior(new window.H.mapevents.MapEvents(this.map));
+        window.H.ui.UI.createDefault(this.map, maptypes);
       }
-    };
-  },
-  async mounted() {
-    // Initialize the platform object:
-    const platform = new window.H.service.Platform({
-      apikey: this.apikey
-    });
-    this.platform = platform;
-    this.initializeHereMap();
-  },
-  methods: {
-    initializeHereMap() { // rendering map
-
-      const mapContainer = this.$refs.hereMap;
-      const H = window.H;
-      // Obtain the default map types from the platform object
-      var maptypes = this.platform.createDefaultLayers();
-
-      // Instantiate (and display) a map object:
-      var map = new H.Map(mapContainer, maptypes.vector.normal.map, {
-        zoom: 10,
-        center: this.center
-        // center object { lat: 40.730610, lng: -73.935242 }
-      });
-
-      addEventListener("resize", () => map.getViewPort().resize());
-
-      // add behavior control
-      new H.mapevents.Behavior(new H.mapevents.MapEvents(map));
-
-      // add UI
-      H.ui.UI.createDefault(map, maptypes);
-      // End rendering the initial map
+      
     }
-  }
-};
+}
 </script>
 
 <style scoped>

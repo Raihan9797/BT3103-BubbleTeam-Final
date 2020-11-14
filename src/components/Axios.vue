@@ -23,9 +23,8 @@ export default {
     content:"";
     display:table;
     clear:both;
-    float: middle;
-    display:block;
-    margin: auto;
+    margin-left:auto;
+    margin-right:auto;
 }
 #chart{
   height:360px;
@@ -36,5 +35,6 @@ export default {
   border-width: 1px;
   padding-bottom: 100px;
   padding-right: 100px;
+  background-color: aliceblue;
 }
 </style>
