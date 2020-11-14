@@ -2,7 +2,7 @@
   <div id="app" class = "background">
     <NatureOfWork></NatureOfWork>
     <EffectsOfCovid></EffectsOfCovid>
-    <Covid19data></Covid19data>
+    <div id = 'axios'><Covid19data></Covid19data></div>
     <ul>
           <li class = "grant" v-for="grant in grantsList" v-bind:key="grant.name">
               <div id = "name"><p><b>{{ grant.name }}</b></p></div>
@@ -142,5 +142,8 @@ button{
 }
 .background{
     background-color:mediumpurple;
+}
+#axios{ 
+    left : 50%
 }
 </style>
