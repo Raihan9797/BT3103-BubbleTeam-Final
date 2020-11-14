@@ -1,7 +1,7 @@
 <template>
   <div id="map">
     <h2>Require assistance with the application? Approach our ambassadors at any of these 8 locations!</h2>
-    <div ref="hereMap" style="height:600px;width:100%"></div>
+    <div id="hereMap" style="height:600px;width:100%"></div>
   </div>
 </template>
 
@@ -15,15 +15,14 @@ export default {
         }
     },
     mounted() {
-        const platform = new window.H.service.Platform({
+        this.platform = new window.H.service.Platform({
             apikey: "eSOYf9qKwUkPXJJP_5sYr1fVm1j0LnWR0S2Brl73QTA"
         });
-        this.platform = platform;
-        this.initializeHereMap();
+        this.initializeMap();
     },
     methods: {
-      initializeHereMap() {
-        const container = this.$refs.hereMap;
+      initializeMap() {
+        var container = document.getElementById('hereMap')
         var maptypes = this.platform.createDefaultLayers();
         this.map = new window.H.Map(container, maptypes.vector.normal.map,
             {
