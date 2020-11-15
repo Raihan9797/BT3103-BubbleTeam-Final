@@ -12,7 +12,7 @@ the government can provide you in the Covid-19 pandemic.</p><br>
                         <option value="" selected="selected">Please select one</option>
                         <option v-for="option in current().options" v-bind:key="option" >{{option}}</option>
                     </select>
-                    <input type="text" v-model="current().response" v-show="current().type==1">
+                    <input type="number" v-model="current().response" v-show="current().type==1">
                 </div>
                 <br>
                 <button v-on:click.prevent="change">{{current().action}}</button>
@@ -137,7 +137,7 @@ export default {
                             console.log(doc.Name)
                             if (doc.Citizenship[0] == "Anything" || doc.Citizenship.includes(user.citizenship)) {
                                 console.log('citizen')
-                                if (doc.AgeLimit == 0 || user.age <= doc.AgeLimit){
+                                if (doc.AgeLimit == 0 || user.age >= doc.AgeLimit){
                                     console.log('age')
                                     if (doc.NatureOfWork[0] == "Anything" || doc.NatureOfWork.includes(user.work)) {
                                         console.log('work')
